@@ -1,0 +1,28 @@
+<h3>詳細</h3>
+<div class="kimono">
+  
+  <p><%= @kimonos.name %></p>
+  <p><%= @kimonos.genre %></p>
+  <p><%= @kimonos.about %></p>
+  <p><%= @kimonos.created_at %></p>
+</div>
+
+<% if @kimonos.video.present? %>
+ <video width="320" height="240" controls>
+  <source src="<%= @kimonos.video.url %>" type="video/mp4">
+  Your browser does not support the video tag.
+ </video>
+<% end %>
+
+<%= link_to "スポット一覧に戻る", kimonos_path %>
+
+<% if user_signed_in? %>
+  <% if current_user.bookmarks.exists?(bookmarkable: @kimonos) %>
+    <%= link_to 'ブックマーク解除', kimonos_bookmark_path(@kimonos, current_user.bookmarks.find_by(bookmarkable: @kimonos)), method: :delete %>
+  <% else %>
+    <%= link_to 'ブックマークする', kimonos_bookmarks_path(@kimonos, bookmark: { bookmarkable_type: 'Kimono', bookmarkable_id: @kimonos.id }), method: :post %>
+  <% end %>
+<% end %>
+
+
+

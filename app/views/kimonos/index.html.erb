@@ -1,0 +1,19 @@
+<h1>Orimeguri</h1>
+<h3>スポット一覧</h3>
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"kimonos",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+ <% end %>
+   <%= link_to "新規投稿へ", new_kimono_path %>
+   <div class="kimonos-container">
+ <% @kimonos.each do |t| %>
+    <div class="kimono">
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <%= t.name %>
+      <%= t.genre_id %>
+      <%= t.about %>
+      <%= link_to "詳細へ", kimono_path(t.id) %>
+    </div>
+ <% end %>
+</div>

@@ -1,0 +1,34 @@
+<h1>(Orimeguri)</h1>
+<h3>新規投稿</h3>
+
+<%= form_with(model: @kimonos, local: true, url: kimonos_path) do |form| %>
+  <div class="field">
+    <%= form.label :店名 %>
+    <%= form.text_field :name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ジャンル %>
+    <%= form.select :genre, options_for_select([['ジャンル', ''], ['和食', '和食'], ['イタリアン', 'イタリアン'], ['フレンチ', 'フレンチ'], ['中華', '中華'], ['カフェ', 'カフェ'], ['スイーツ', 'スイーツ'], ['観光地', '観光地'], ['アミューズメント', 'アミューズメント'], ['ショッピング', 'ショッピング'], ['その他', 'その他']]) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :どうだった？ %>
+    <%= form.text_field :about, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video %>
+    <%= form.file_field :video %>
+  </div>
+
+  <%= form.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", kimonos_path %>
+
