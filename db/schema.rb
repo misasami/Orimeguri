@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_07_075511) do
+ActiveRecord::Schema.define(version: 2024_02_15_121348) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2024_02_07_075511) do
     t.integer "genre_id"
     t.string "image"
     t.text "videodata"
+    t.float "lat"
+    t.float "lng"
   end
 
   create_table "users", force: :cascade do |t|

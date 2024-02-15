@@ -33,10 +33,11 @@ class KimonosController < ApplicationController
   private
 
   def kimono_params
-    params.require(:kimono).permit(:name, :about, :genre, :image)
+    params.require(:kimono).permit(:name, :about, :genre, :image :body,:lat,:lng)
   end
 
   def bookmark
   end
+
 end
 
